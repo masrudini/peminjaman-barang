@@ -105,12 +105,12 @@
         </div>
     @endif
 
-    <table class="table table-hover table-responsive w-100 d-block d-md-table" id="myTable">
+    <table class="table table-hover table-responsive" id="myTable">
         <thead class="table-warning">
             <tr>
                 <th><input type="checkbox" id="select-all"></th>
                 <th>No</th>
-                <th>Kode Barang</th>
+                <th style="max-width: 70px; white-space: normal; word-wrap: break-word;">Kode Barang</th>
                 <th>Nama Barang</th>
                 <th>Kategori</th>
                 <th>Gambar</th>
@@ -126,7 +126,7 @@
                     <tr>
                         <td><input type="checkbox" name="selected[]" value="{{ $b->id }}"></td>
                         <td class="align-middle">{{ $loop->iteration }}</td>
-                        <td class="align-middle">{{ $b->kode_barang }}</td>
+                        <td class="align-middle" style="max-width: 70px; white-space: normal; word-wrap: break-word;">{{ $b->kode_barang }}</td>
                         <td class="align-middle">{{ $b->nama_barang }}</td>
                         <td class="align-middle">{{ $b->kategoriBarang->nama_kategori }}</td>
                         <td class="align-middle">
