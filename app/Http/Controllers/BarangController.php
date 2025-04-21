@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\KategoriBarang;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class BarangController extends Controller
 {

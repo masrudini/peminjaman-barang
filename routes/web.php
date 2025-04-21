@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Ruangan;
+use App\Exports\BarangExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -69,9 +71,12 @@ Route::middleware('auth')->group(function () {
         Route::put('/barang/{id}', 'update')->name('barang.update');
         Route::delete('/barang/{id}', 'destroy')->name('barang.destroy');
         Route::post('/barang/print-selected', 'printSelected')->name('barang.printSelected');
-        Route::get('/barang/print', 'printAll')->name('barang.printAll');
         Route::get('/barang/toggle-status/{id}', 'toggleStatus')->name('barang.toggleStatus');
     });
+
+    Route::get('/barang-print-all', function () {
+        return Excel::download(new BarangExport(), 'data-barang.xlsx');
+    })->name('barang.printAll');
 
     // ===============================
     // User Routes

@@ -22,7 +22,7 @@
         }
 
         img {
-            width: 100px;
+            width: 25px;
             /* Adjust the size of the QR code image */
             height: auto;
             /* Maintain aspect ratio */
@@ -35,23 +35,14 @@
     <h1>Data Barang</h1>
 
     <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Kode Barang</th>
-                <th>Nama Barang</th>
-                <th>QR Code</th> <!-- Column for the QR Code -->
-            </tr>
-        </thead>
         <tbody>
             @foreach ($barang as $b)
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $b->kode_barang }}</td>
-                <td>{{ $b->nama_barang }}</td>
+                <td style="font-size: 10px;">{{ $loop->iteration }}</td>
+                <td style="font-size: 10px;">{{ $b->kode_barang }}</td>
                 <td class="align-middle">
                     @if ($b->qr_code)
-                    <img src="{{ public_path('storage/' . $b->qr_code) }}" alt="QR Code" style="width: 100px;">
+                    <img src="{{ public_path('storage/' . $b->qr_code) }}" alt="QR Code" style="width: 25px;">
                     @else
                     No QR Code
                     @endif

@@ -4,18 +4,22 @@
 
 @section('contents')
     <div class="d-flex align-items-center justify-content-between mb-3">
-        <form action="{{ route('barang.index') }}" method="GET" class="form-inline">
+        {{-- <form action="{{ route('barang.index') }}" method="GET" class="form-inline">
             <div class="form-group mr-2">
                 <input type="text" name="search" class="form-control" placeholder="Search..."
                     value="{{ request('search') }}">
             </div>
             <button type="submit" class="btn btn-warning">Search</button>
-        </form>
+        </form> --}}
+        <div>
+            <a href="{{ route('barang.printAll') }}" class="btn btn-info mr-1">Print Laporan</a>
+        </div>
 
         <div class="d-flex">
             {{-- modal create barang --}}
             <button type="button" class="btn btn-success mr-1" data-toggle="modal" data-target="#createModal">
                 Tambah Data Barang </button>
+            {{-- print data barang to excel --}}
             <form id="print-selected-form" action="{{ route('barang.printSelected') }}" method="POST" class="d-inline">
                 @csrf
                 <input type="hidden" name="selected_ids" id="selected-ids" value="">
@@ -101,7 +105,7 @@
         </div>
     @endif
 
-    <table class="table table-hover table-responsive w-100 d-block d-md-table">
+    <table class="table table-hover table-responsive w-100 d-block d-md-table" id="myTable">
         <thead class="table-warning">
             <tr>
                 <th><input type="checkbox" id="select-all"></th>
@@ -118,7 +122,6 @@
             </tr>
         </thead>
         <tbody>
-            @if ($barang->count() > 0)
                 @foreach ($barang as $b)
                     <tr>
                         <td><input type="checkbox" name="selected[]" value="{{ $b->id }}"></td>
@@ -263,13 +266,14 @@
                         </div>
                     </div>
                 @endforeach
-            @else
-                <tr>
-                    <td class="text-center" colspan="12">Barang not found</td>
-                </tr>
-            @endif
         </tbody>
     </table>
+
+    <script>
+        new DataTable('#myTable', {
+        stateSave: true
+    , });
+    </script>
 
     <script>
         document.getElementById('select-all').addEventListener('click', function(event) {
