@@ -40,7 +40,7 @@
             
             <div class="form-group">
                 <label for="keterangan">Keterangan</label>
-                <textarea name="keterangan" class="form-control">{{ $peminjaman->keterangan }}</textarea>
+                <textarea name="keterangan" class="form-control" rows="3">{{ $peminjaman->keterangan }}</textarea>
             </div>
 
             <button type="submit" class="btn btn-warning">Update</button>

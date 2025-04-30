@@ -27,6 +27,7 @@ class BarangExport implements FromCollection, WithHeadings, ShouldAutoSize, With
                 'kategori' => $item->kategoriBarang->nama_kategori,
                 'kondisi' => $item->kondisi,
                 'tgl_masuk' => $item->tgl_masuk,
+                'keterangan' => $item->keterangan,
             ];
         });
 
@@ -67,14 +68,14 @@ class BarangExport implements FromCollection, WithHeadings, ShouldAutoSize, With
 
     public function headings(): array
     {
-        $data = ['Kode Barang', 'Nama Barang', 'Kategori', 'Kondisi', 'Tanggal Masuk'];
+        $data = ['Kode Barang', 'Nama Barang', 'Kategori', 'Kondisi', 'Tanggal Masuk', 'Keterangan'];
 
         return $data;
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:E1')->applyFromArray([
+        $sheet->getStyle('A1:F1')->applyFromArray([
             'fill' => [
                 'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
                 'startColor' => [

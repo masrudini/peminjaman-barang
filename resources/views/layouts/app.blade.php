@@ -30,7 +30,21 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.sidebar')
+        @if(auth()->user())
+            @include('layouts.sidebar')
+        @else
+            <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #00008C">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/dashboard') }}">
+                    <div class="sidebar-brand">
+                        <!-- Ganti ikon dengan gambar -->
+                        <img src="{{ asset('pupr.png') }}" alt="BWSK Logo" style="width: 40px; height: auto;">
+                    </div>
+                    <div class="sidebar-brand-text mx-3 mt-3 font-weight-bold">BWSK I Pontianak</div>
+                </a>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+            </ul>
+        @endif
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->

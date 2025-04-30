@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('kondisi');
             $table->string('kode_barang');
             $table->string('qr_code');
+            $table->longText('keterangan')->nullable();
             $table->enum('status', ['Tersedia', 'Tidak Tersedia'])->default('Tersedia');
             $table->timestamps();
         });

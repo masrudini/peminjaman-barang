@@ -25,6 +25,10 @@
                         <p><b>Status:</b> <span class="badge badge-danger">{{ $barang->status }}</span></p>
                     @endif
                 </div><!-- / project-info-box -->
+
+                <div class="project-info-box">
+                    <p><b>Keterangan:</b> {{ $barang->keterangan }}</p>
+                </div><!-- / project-info-box -->
             </div><!-- / column -->
 
             <div class="col-md-4 col-sm-12 mb-3">

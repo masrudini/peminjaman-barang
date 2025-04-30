@@ -57,12 +57,13 @@ class BarangController extends Controller
             'kode_barang' => $request->kode_barang,
             'kondisi' => $request->kondisi,
             'kategori_barang_id' => $request->kategori_barang_id,
+            'keterangan' => $request->keterangan ?? null,
             'qr_code' => '-',  // Placeholder for QR code
         ]);
 
         // Generate QR code for the newly created barang
         $barcodeLink = route('barang.show', $barang->id); // Use the show route to generate the QR code link
-        $qrCodeApiUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($barcodeLink);
+        $qrCodeApiUrl = "https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=" . urlencode($barcodeLink); // QR code API URL
 
         // Save the QR code image locally
         $qrCodeImagePath = 'qrcode/' . $barang->id . '.png';
@@ -105,6 +106,7 @@ class BarangController extends Controller
             'kode_barang' => 'required|string|max:50',
             'kondisi' => 'required|in:bagus,rusak',
             'kategori_barang_id' => 'nullable|exists:kategori_barangs,id',
+            'keterangan' => 'nullable|string',
         ]);
 
         $barang = Barang::findOrFail($id);

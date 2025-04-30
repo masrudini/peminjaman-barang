@@ -77,6 +77,10 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="keterangan">Keterangan</label>
+                                <textarea class="form-control" name="keterangan" id="keterangan" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label for="kode_barang">Kode Barang</label>
                                 <input type="text" name="kode_barang" class="form-control"
                                     value="{{ old('kode_barang') }}" required>
@@ -221,6 +225,11 @@
                                                     </option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        {{-- keterangan --}}
+                                        <div class="form-group">
+                                            <label for="keterangan">Keterangan</label>
+                                            <textarea class="form-control" name="keterangan" id="keterangan" rows="3">{{ $b->keterangan }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_barang">Kode Barang</label>
